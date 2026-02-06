@@ -1,0 +1,20 @@
+CLASS zcl_aj_demo_action DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+
+    INTERFACES if_aia_action .
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+
+
+CLASS zcl_aj_demo_action IMPLEMENTATION.
+
+
+  METHOD if_aia_action~run.
+  ENDMETHOD.
+ENDCLASS.
