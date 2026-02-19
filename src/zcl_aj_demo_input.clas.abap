@@ -8,6 +8,7 @@ CLASS zcl_aj_demo_input DEFINITION
     INTERFACES if_aia_sd_action_input .
 
     CONSTANTS : BEGIN OF output_enum,
+
                   "! <p class="shorttext">Plain text</p>
                   text TYPE string VALUE 'TEXT',
 
@@ -16,10 +17,11 @@ CLASS zcl_aj_demo_input DEFINITION
 
                   "! <p class="shorttext">Code Change</p>
                   code TYPE string VALUE 'CODE',
+
                 END OF output_enum.
 
-    "! @values { @link zcl_aj_demo_input.data:output_enum }
-    "! @default { @link zcl_aj_demo_input.data:output_enum.text }
+    "! $values { @link zcl_aj_demo_input.data:output_enum }
+    "! $default { @link zcl_aj_demo_input.data:output_enum.text }
     TYPES output_format TYPE string.
 
     TYPES : BEGIN OF tab_line,
@@ -41,7 +43,7 @@ CLASS zcl_aj_demo_input DEFINITION
       "! <p class="shorttext">Choose your action</p>
       BEGIN OF input,
 
-        "! <p class="shorttext">Choose an output<p>
+        "! <p class="shorttext">Choose an output</p>
         output_format     TYPE output_format,
 
         "! <p class="shorttext"> VH: Class<p>
@@ -71,7 +73,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_aj_demo_input IMPLEMENTATION.
+CLASS ZCL_AJ_DEMO_INPUT IMPLEMENTATION.
 
 
   METHOD if_aia_sd_action_input~create_input_config.

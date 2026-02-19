@@ -13,7 +13,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_aj_demo_sideeffect IMPLEMENTATION.
+CLASS ZCL_AJ_DEMO_SIDEEFFECT IMPLEMENTATION.
 
 
   METHOD if_sd_determination~run.
@@ -29,7 +29,22 @@ CLASS zcl_aj_demo_sideeffect IMPLEMENTATION.
         result = input
     ).
 *    CATCH cx_sd_invalid_data.
-    input-se_output = strlen( input-se_input ).
+
+    CASE    determination_kind.
+     WHEN if_sd_determination=>kind-after_update.
+
+        input-se_output = |{ input-output_format }:{ strlen( input-se_input ) }|.
+     WHEN if_sd_determination=>kind-after_create.
+        DATA(actual_index) = lines( input-table_input ).
+
+        LOOP AT input-table_input REFERENCE INTO DATA(line).
+            line->int_number = actual_index.
+            actual_index -= 1.
+        ENDLOOP.
+
+  ENDCASE.
+
+*    input-se_output = strlen( input-se_input ).
 
     result = input.
 

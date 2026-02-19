@@ -24,7 +24,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_aj_demo_value_provider IMPLEMENTATION.
+CLASS ZCL_AJ_DEMO_VALUE_PROVIDER IMPLEMENTATION.
 
 
   METHOD if_sd_value_help_dsni~get_value_help_items.
@@ -54,6 +54,8 @@ CLASS zcl_aj_demo_value_provider IMPLEMENTATION.
 
 
   ENDMETHOD.
+
+
   METHOD get_method.
 
     IF input-vh_class IS INITIAL.
@@ -75,6 +77,7 @@ CLASS zcl_aj_demo_value_provider IMPLEMENTATION.
 
   ENDMETHOD.
 
+
   METHOD get_parameter.
 
     IF input-vh_parameter IS INITIAL.
@@ -90,10 +93,9 @@ CLASS zcl_aj_demo_value_provider IMPLEMENTATION.
         INSERT VALUE #(  ) INTO TABLE result REFERENCE INTO DATA(result_entry).
 
         result_entry->name = parameter->name.
-        result_entry->description = parameter->content(  )->get(  )-short_description.
+        result_entry->description = parameter->content(  )->get(  )-typing_definition->get_value( ).
 
     ENDLOOP.
 
   ENDMETHOD.
-
 ENDCLASS.
